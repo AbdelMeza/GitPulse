@@ -1,0 +1,35 @@
+@use "./theme" as t;
+
+// Spacing scale
+$space-1: clamp(8px, 2vw, 13px);
+$space-2: calc(#{$space-1} * 1.618);
+$space-3: calc(#{$space-2} * 1.618);
+$space-4: calc(#{$space-3} * 1.618);
+
+// Border radius scale
+$radius-1: clamp(9px, 1.5vw, 12px);
+$radius-2: calc(#{$radius-1} * 1.618);
+$radius-3: calc(#{$radius-2} * 1.618);
+
+// Heigth
+$height-1: clamp(35px, 2vw, 40px);
+$height-2: clamp(55px, 2vw, 60px);
+
+//Font size
+$fontsize-1: 0.6rem;
+$fontsize-2: 0.95rem;
+$fontsize-3: 1.2rem;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin border-shade-1 {
+  border: 1px solid t.$bg-color-shade-200;
+}
+
+@mixin border-shade-2 {
+  border: 1px solid t.$bg-color-shade-300;
+}

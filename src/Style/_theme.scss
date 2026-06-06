@@ -1,0 +1,27 @@
+:root, [data-theme="light"] {
+  --text-100: #111111;
+  --text-200: #4b4b4b;
+  --text-300: #8e8e8e;
+
+  --bg-100: #f7f2f0;
+  --bg-200: #ede8e6;
+  --bg-300: #cec7c5;
+}
+
+[data-theme="dark"] {
+  --text-100: #f1f1f1;
+  --text-200: #a1a1a1;
+  --text-300: #7c7c7c;
+
+  --bg-100: #1a191c;
+  --bg-200: #1f1e20;
+  --bg-300: #2e2d2f;
+}
+
+$text-color-shade-100: var(--text-100);
+$text-color-shade-200: var(--text-200);
+$text-color-shade-300: var(--text-300);
+
+$bg-color-shade-100: var(--bg-100);
+$bg-color-shade-200: var(--bg-200);
+$bg-color-shade-300: var(--bg-300);

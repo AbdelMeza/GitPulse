@@ -1,0 +1,44 @@
+@use "./config" as c;
+@use "./theme" as t;
+
+@font-face {
+  font-family: "font-regular";
+  src: url("../../Font/font-regular.otf");
+}
+
+@font-face {
+  font-family: "font-medium";
+  src: url("../../Font/font-medium.otf");
+}
+
+@font-face {
+  font-family: "font-bold";
+  src: url("../../Font/font-bold.otf");
+}
+
+@font-face {
+  font-family: "secondary-font";
+  src: url("../../Font/secondary-font.ttf");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: t.$bg-color-shade-100;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-family: "font-regular";
+  font-size: c.$fontsize-2;
+}
+
+button{
+    font-family: "font-medium";
+}

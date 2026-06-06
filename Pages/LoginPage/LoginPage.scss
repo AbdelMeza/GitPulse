@@ -1,0 +1,80 @@
+@use "../../src/Style/config" as c;
+@use "../../src/Style/theme" as t;
+
+.login-page {
+  background-color: t.$bg-color-shade-200;
+  height: 100vh;
+  @include c.flex-center;
+}
+
+.login-content {
+  background-color: t.$bg-color-shade-100;
+  padding: c.$space-1;
+  @include c.border-shade-2;
+  border-radius: c.$radius-2;
+  width: 450px;
+  @include c.flex-center;
+  flex-direction: column;
+
+  @media screen and (max-width: 550px) {
+    &{
+        height: 100vh;
+        width: 100vw;
+        border-radius: 0;
+        border-color: transparent;
+        padding: 0 c.$space-4;
+    }
+  }
+
+  .upper-content {
+    @include c.flex-center;
+    flex-direction: column;
+    margin: c.$space-2 0 c.$space-3;
+
+    .logo-container {
+      padding: c.$space-1 0;
+      @include c.flex-center;
+      flex-direction: column;
+      gap: c.$space-1;
+
+      .logo-text {
+        font-family: "font-bold";
+        color: t.$text-color-shade-100;
+        font-size: c.$fontsize-3;
+      }
+    }
+
+    .description {
+      color: t.$text-color-shade-200;
+      margin: 0 c.$space-3;
+      text-align: center;
+    }
+  }
+
+  .error-message {
+    width: 100%;
+    padding: c.$space-1;
+    border: 1px solid #ff3939;
+    margin-top: c.$space-1;
+    color: #ff3939;
+    border-radius: c.$radius-1;
+    background-color: #ff191911;
+    @include c.flex-center;
+  }
+
+  .github-auth-btn {
+    padding: c.$space-1;
+    width: 100%;
+    margin: c.$space-1 0;
+    border-radius: c.$radius-1;
+    @include c.flex-center;
+    gap: c.$space-1;
+    cursor: pointer;
+  }
+
+  .login-footer span {
+    font-family: "secondary-font";
+    font-size: c.$fontsize-1;
+    color: t.$text-color-shade-300;
+  }
+}
