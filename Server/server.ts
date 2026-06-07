@@ -2,7 +2,9 @@ import cors from "cors";
 import http from "http";
 import dotenv from "dotenv";
 import express from "express";
+import cookieParser from "cookie-parser";
 import githubAuthRouter from "./Routes/github.auth.route.ts"
+import githubProfileRoute from "./Routes/github.profile.route.ts";
 
 dotenv.config();
 
@@ -18,9 +20,10 @@ app.use(
   })
 );
 app.use(express.json());
-
+app.use(cookieParser());
 //Routes
 app.use('/api', githubAuthRouter);
+app.use('/user', githubProfileRoute)
 
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

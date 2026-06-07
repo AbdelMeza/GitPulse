@@ -7,7 +7,6 @@ export default function LoginPage() {
     const [queryParams, setQueryParams] = useSearchParams()
     const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-
     useEffect(() => {
         const errorParam = queryParams.get("auth_error")
 
