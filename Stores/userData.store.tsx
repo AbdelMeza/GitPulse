@@ -1,13 +1,45 @@
 import { create } from "zustand";
 import API_URL from "./api_url";
 
-interface GitHubUser {
+export interface GitHubUser {
+  identity: {
     id: number;
     username: string;
     name: string;
     avatar: string;
     bio: string;
-    public_repos: number;
+    company: string | null;
+    location: string | null;
+    followers: number;
+    following: number;
+  };
+  stats: {
+    public_repos_count: number;
+    total_stars_received: number;
+    top_languages: string[];
+    total_30_days_commits: number;
+  };
+  commit_history_30_days: {
+    date: string; 
+    commits: number;
+  }[];
+  recent_repositories: {
+    id: number;
+    name: string;
+    description: string | null;
+    url: string;
+    language: string | null;
+    stars: number;
+    forks: number;
+    updated_at: string;
+  }[];
+  recent_activity: {
+    id: string;
+    type: string;
+    repo: string;
+    created_at: string;
+    commits_count: number;
+  }[];
 }
 
 type userDataStoreType = {

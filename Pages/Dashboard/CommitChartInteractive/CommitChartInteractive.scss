@@ -1,0 +1,119 @@
+@use "../../../src/Style/config" as c;
+@use "../../../src/Style/theme" as t;
+
+.gitpulse-chart-card {
+  border: 1px solid t.$bg-color-shade-300;
+  background-color: t.$bg-color-shade-200;
+  border-radius: 0.75rem;
+  padding: c.$space-3;
+  width: 100%;
+  box-sizing: border-box;
+
+  .chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid t.$bg-color-shade-300;
+    padding-bottom: c.$space-2;
+    margin-bottom: c.$space-2;
+
+    .header-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .chart-title {
+        color: t.$text-color-shade-100;
+        font-size: c.$fontsize-2;
+        font-family: "font-bold";
+        display: flex;
+        align-items: center;
+        gap: c.$space-1;
+      }
+
+      .chart-description {
+        color: t.$text-color-shade-300;
+        font-size: c.$fontsize-2;
+      }
+    }
+
+    .header-actions {
+      @include c.flex-center;
+      gap: c.$space-1;
+
+      .performance-badge{
+        padding: calc(c.$space-1 * 0.6);
+        border-radius: c.$radius-1;
+        &.up{
+          color: #4dff4d;
+          border: 1px solid #4dff4d52;
+          background-color: #4dff4d12;
+        }
+        &.down{
+          color: #ff4343;
+          border: 1px solid #ff434352;
+          background-color: #ff313112;
+        }
+      }
+
+      .chart-select {
+        background-color: t.$bg-color-shade-300;
+        color: t.$text-color-shade-100;
+        font-size: c.$fontsize-2;
+        padding: 0.8rem 1rem;
+        border-radius: c.$radius-1;
+        outline: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .chart-content {
+    padding-top: 1rem;
+
+    .chart-wrapper {
+      width: 100%;
+      height: 250px;
+    }
+
+    g text {
+      fill: t.$text-color-shade-300;
+      tspan {
+        font-size: c.$fontsize-2;
+      }
+    }
+  }
+}
+
+.custom-chart-tooltip {
+  background-color: rgba(10, 10, 10, 0.9);
+  border: 1px solid #262626;
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  .tooltip-section {
+    display: flex;
+    flex-direction: column;
+
+    .color {
+      width: 10px;
+      aspect-ratio: 1;
+      display: inline-block;
+      border-radius: 2px;
+      margin-right: calc(c.$space-1 * 0.6);
+    }
+  }
+
+  .tooltip-date {
+    color: t.$text-color-shade-300;
+    margin-bottom: calc(c.$space-1 * 0.6);
+  }
+
+  .tooltip-value {
+    color: t.$text-color-shade-100;
+  }
+}
