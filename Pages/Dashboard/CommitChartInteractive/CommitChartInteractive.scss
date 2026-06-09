@@ -2,18 +2,18 @@
 @use "../../../src/Style/theme" as t;
 
 .gitpulse-chart-card {
-  border: 1px solid t.$bg-color-shade-300;
-  background-color: t.$bg-color-shade-200;
+  border: 1px solid t.$stroke-color;
+  background-color: t.$bg-color-shade-300;
+
   border-radius: 0.75rem;
   padding: c.$space-3;
-  width: 100%;
+  width: 50%;
   box-sizing: border-box;
 
   .chart-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid t.$bg-color-shade-300;
     padding-bottom: c.$space-2;
     margin-bottom: c.$space-2;
 
@@ -24,11 +24,8 @@
 
       .chart-title {
         color: t.$text-color-shade-100;
-        font-size: c.$fontsize-2;
-        font-family: "font-bold";
-        display: flex;
-        align-items: center;
-        gap: c.$space-1;
+        font-size: c.$fontsize-3;
+        font-family: "font-medium";
       }
 
       .chart-description {
@@ -41,23 +38,30 @@
       @include c.flex-center;
       gap: c.$space-1;
 
-      .performance-badge{
+      .performance-badge {
+        display: flex;
+        align-items: center;
+        gap: calc(c.$space-1 * 0.3);
         padding: calc(c.$space-1 * 0.6);
         border-radius: c.$radius-1;
-        &.up{
+
+        &.up {
           color: #4dff4d;
-          border: 1px solid #4dff4d52;
-          background-color: #4dff4d12;
         }
-        &.down{
+        &.down {
           color: #ff4343;
-          border: 1px solid #ff434352;
-          background-color: #ff313112;
+        }
+
+        span {
+          font-family: "secondary-font";
         }
       }
 
       .chart-select {
-        background-color: t.$bg-color-shade-300;
+        background-color: t.$bg-color-shade-200;
+        border: 1px solid t.$stroke-color;
+        appearance: none;
+        @include c.flex-center;
         color: t.$text-color-shade-100;
         font-size: c.$fontsize-2;
         padding: 0.8rem 1rem;
@@ -70,24 +74,36 @@
 
   .chart-content {
     padding-top: 1rem;
+    height: 150px;
 
     .chart-wrapper {
       width: 100%;
-      height: 250px;
+      height: 100%;
+    }
+
+    .recharts-responsive-container {
+      width: 100%;
+      height: 100%;
     }
 
     g text {
       fill: t.$text-color-shade-300;
       tspan {
         font-size: c.$fontsize-2;
+        font-family: "font-medium";
       }
     }
   }
 }
 
 .custom-chart-tooltip {
-  background-color: rgba(10, 10, 10, 0.9);
-  border: 1px solid #262626;
+  background-color: t.$bg-color-shade-100;
+
+  [data-theme="light"] & {
+    background-color: t.$bg-color-shade-300;
+  }
+  
+  border: 1px solid t.$stroke-color;
   border-radius: 0.5rem;
   padding: 0.6rem 0.75rem;
   backdrop-filter: blur(6px);
@@ -96,24 +112,27 @@
   gap: 0.25rem;
 
   .tooltip-section {
-    display: flex;
-    flex-direction: column;
+    @include c.flex-center;
+    gap: calc(c.$space-1 * 0.6);
 
     .color {
-      width: 10px;
-      aspect-ratio: 1;
+      height: 10px;
+      aspect-ratio: 1 / 2;
       display: inline-block;
       border-radius: 2px;
       margin-right: calc(c.$space-1 * 0.6);
     }
-  }
 
-  .tooltip-date {
-    color: t.$text-color-shade-300;
-    margin-bottom: calc(c.$space-1 * 0.6);
-  }
+    span {
+      font-family: "secondary-font";
 
-  .tooltip-value {
-    color: t.$text-color-shade-100;
+      &.tooltip-period {
+        color: t.$text-color-shade-200;
+      }
+
+      &.tooltip-value {
+        color: t.$text-color-shade-100;
+      }
+    }
   }
 }

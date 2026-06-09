@@ -1,0 +1,5 @@
+@use "../../../src/Style/theme" as t;
+
+:export{
+  dataStrokeColor: t.$text-color-shade-300;
+}

@@ -10,7 +10,7 @@
 .login-content {
   background-color: t.$bg-color-shade-100;
   padding: c.$space-1;
-  @include c.border-shade-2;
+  border: 1px solid t.$stroke-color;
   border-radius: c.$radius-2;
   width: 450px;
   @include c.flex-center;
@@ -63,6 +63,7 @@
   }
 
   .github-auth-btn {
+    background-color: t.$text-color-shade-100;
     padding: c.$space-1;
     width: 100%;
     margin: c.$space-1 0;

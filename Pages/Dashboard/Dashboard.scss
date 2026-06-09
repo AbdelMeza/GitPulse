@@ -1,0 +1,6 @@
+@use "../../src/Style/theme" as t;
+
+.dashboard-page{
+    background-color: t.$bg-color-shade-100;
+    min-height: 100vh;
+}

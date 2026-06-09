@@ -1,4 +1,5 @@
 
+import "./Dashboard.scss"
 import { useEffect } from "react"
 import useUserDataStore from "../../Stores/userData.store"
 import { CommitChartInteractive } from "./CommitChartInteractive/CommitChartInteractive"
@@ -18,7 +19,7 @@ export default function Dashboard() {
     }, []) 
 
     return (
-        <div className="dahboard-page">
+        <div className="dashboard-page">
             {user_data ? (
                 <CommitChartInteractive data={(user_data as any)?.commit_comparison_data} performanceDelta={(user_data as any)?.stats.performance_delta_percent}/>
             ) : (
