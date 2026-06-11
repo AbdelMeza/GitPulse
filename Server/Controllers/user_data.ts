@@ -134,6 +134,8 @@ export async function get_user_data(req: Request, res: Response): Promise<Respon
       },
       commit_comparison_data: currentMonthData.map((d, i) => ({ 
         dayIndex: i + 1, 
+        currentMonthDate: d.dateLabel,
+        lastMonthDate: lastMonthData[i].dateLabel,
         currentCommits: d.count, 
         lastCommits: lastMonthData[i].count 
       })).reverse()

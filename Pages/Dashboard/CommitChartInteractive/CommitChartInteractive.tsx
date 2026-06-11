@@ -41,6 +41,7 @@ function CustomTooltip({ active, payload }: any) {
 export function CommitChartInteractive({ data = [], performanceDelta = 0 }: CommitChartInteractiveProps) {
   const [timeRange, setTimeRange] = React.useState("30d")
   const [isMounted, setIsMounted] = React.useState(false)
+  console.log(data)
 
   React.useEffect(() => {
     const timer = setTimeout(() => setIsMounted(true), 50)
