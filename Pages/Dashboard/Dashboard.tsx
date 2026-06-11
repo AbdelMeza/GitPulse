@@ -1,10 +1,10 @@
 
 import "./Dashboard.scss"
 import { useEffect } from "react"
+import KPI from "../../Components/KPI/KPI"
 import useUserDataStore from "../../Stores/userData.store"
 import { CommitChartInteractive } from "./CommitChartInteractive/CommitChartInteractive"
 import { Sidebar } from "../../Components/SideBar/SideBar"
-import KPI from "../../Components/KPI/KPI"
 
 export default function Dashboard() {
     const { user_data, get_user_data, loading_state } = useUserDataStore()
@@ -21,8 +21,6 @@ export default function Dashboard() {
     }, [])
 
     const activity = user_data?.recent_activities
-
-    console.log(activity)
 
     return (
         <div className="dashboard-page">
@@ -43,18 +41,18 @@ export default function Dashboard() {
                     } loadingState={loading_state} />
                 </div>
                 <div className="performance-chart">
-                    <CommitChartInteractive data={(user_data as any)?.commit_comparison_data} performanceDelta={(user_data as any)?.stats.performance_delta_percent} />
+                    <CommitChartInteractive data={(user_data as any)?.commit_comparison_data} performanceDelta={(user_data as any)?.stats.performance_delta_percent} loadingState={loading_state} />
                 </div>
                 <div className="activities-container">
                     <div className="header">
                         <span className="header-text">Recent activity</span>
                     </div>
                     <div className="activities-wrapper">
-                        {activity && activity.length > 0 ?
+                        {loading_state ? [0, 0, 0].map((_, i) => (
+                            <div className="loading-item" key={i}></div>
+                        )) : activity && activity.length > 0 ?
                             activity.map((a, i) => (
                                 <a href={a.url} target="_blank" rel="noopener noreferrer" className="activity-item" key={i}>
-
-                                    {/* Ligne 1 : Dépôt et Date (Métadonnées) */}
                                     <div className="meta-content">
                                         <div className="repo-info">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -67,13 +65,9 @@ export default function Dashboard() {
                                             {new Date(a.date).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' })}
                                         </span>
                                     </div>
-
-                                    {/* Ligne 2 : Titre principal (Le commit / l'action) */}
                                     <div className="main-content">
                                         <span className="activity-title">{a.title}</span>
                                     </div>
-
-                                    {/* Ligne 3 : Le badge du type d'événement */}
                                     <div className="footer-content">
                                         <span className="activity-type badge">{a.type}</span>
                                     </div>

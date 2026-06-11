@@ -36,6 +36,19 @@
         display: flex;
         flex-direction: column;
         gap: c.$space-2;
+        max-height: 400px;
+        overflow-y: scroll;
+
+        .loading-item {
+          width: 100%;
+          min-height: 150px;
+          border-radius: c.$radius-2;
+          @include c.skeleton-loading;
+        }
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
 
         .activity-item {
           display: flex;
@@ -45,9 +58,9 @@
           padding: c.$space-2;
           border-radius: c.$radius-2;
           border: 1px solid t.$stroke-color;
-          
-          [data-theme="dark"] &{
-              border-color: t.$stroke-color-200;
+
+          [data-theme="dark"] & {
+            border-color: t.$stroke-color-200;
           }
 
           .meta-content {
