@@ -13,12 +13,12 @@ $radius-3: calc(#{$radius-2} * 1.618);
 
 // Heigth
 $height-1: clamp(35px, 2vw, 40px);
-$height-2: clamp(55px, 2vw, 60px);
+$height-2: clamp(45px, 2vw, 55px);
 
 //Font size
 $fontsize-1: 0.6rem;
 $fontsize-2: 0.95rem;
-$fontsize-3: 1.2rem;
+$fontsize-3: 1.8rem;
 
 @mixin flex-center {
   display: flex;

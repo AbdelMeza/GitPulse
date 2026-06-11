@@ -1,5 +1,13 @@
 @use "./theme" as t;
 
 :export{
+  textColorShade100: t.$text-color-shade-100;
+  textColorShade200: t.$text-color-shade-200;
+  textColorShade300: t.$text-color-shade-300;
+
+  bgColorShade100: t.$bg-color-shade-100;
+  bgColorShade200: t.$bg-color-shade-200;
+  bgColorShade300: t.$bg-color-shade-300;
+
   strokeColor: t.$stroke-color;
 }

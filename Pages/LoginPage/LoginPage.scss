@@ -2,13 +2,13 @@
 @use "../../src/Style/theme" as t;
 
 .login-page {
-  background-color: t.$bg-color-shade-200;
+  background-color: t.$bg-color-shade-100;
   height: 100vh;
   @include c.flex-center;
 }
 
 .login-content {
-  background-color: t.$bg-color-shade-100;
+  background-color: t.$bg-color-shade-200;
   padding: c.$space-1;
   border: 1px solid t.$stroke-color;
   border-radius: c.$radius-2;
@@ -17,12 +17,12 @@
   flex-direction: column;
 
   @media screen and (max-width: 550px) {
-    &{
-        height: 100vh;
-        width: 100vw;
-        border-radius: 0;
-        border-color: transparent;
-        padding: 0 c.$space-4;
+    & {
+      height: 100vh;
+      width: 100vw;
+      border-radius: 0;
+      border-color: transparent;
+      padding: 0 c.$space-4;
     }
   }
 
@@ -36,6 +36,7 @@
       @include c.flex-center;
       flex-direction: column;
       gap: c.$space-1;
+      margin-bottom: c.$space-1;
 
       .logo-text {
         font-family: "font-bold";
@@ -54,12 +55,22 @@
   .error-message {
     width: 100%;
     padding: c.$space-1;
-    border: 1px solid #ff3939;
+    border: 1px solid #ff39394b;
     margin-top: c.$space-1;
     color: #ff3939;
-    border-radius: c.$radius-1;
     background-color: #ff191911;
+    border-radius: c.$radius-1;
     @include c.flex-center;
+
+    .error-icon {
+      width: 23px;
+      margin-right: c.$space-1;
+    }
+
+    .error-text {
+      font-family: "secondary-font";
+      font-size: calc(c.$fontsize-2 * 0.75);
+    }
   }
 
   .github-auth-btn {
@@ -71,6 +82,10 @@
     @include c.flex-center;
     gap: c.$space-1;
     cursor: pointer;
+
+    .btn-text {
+      color: t.$bg-color-shade-100;
+    }
   }
 
   .login-footer span {

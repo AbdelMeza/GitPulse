@@ -17,10 +17,13 @@ export interface GitHubUser {
     public_repos_count: number;
     total_stars_received: number;
     top_languages: string[];
-    total_30_days_commits: number;
+    current_month_contributions: number,
+    total_lifetime_contributions: number,
+    longest_streak: number,
+    performance_delta_percent: number,
   };
   commit_history_30_days: {
-    date: string; 
+    date: string;
     commits: number;
   }[];
   recent_repositories: {
@@ -43,38 +46,38 @@ export interface GitHubUser {
 }
 
 type userDataStoreType = {
-    user_data: GitHubUser | null;
-    loading_state: boolean;
-    get_user_data: () => Promise<void>;
+  user_data: GitHubUser | null;
+  loading_state: boolean;
+  get_user_data: () => Promise<void>;
 }
 
 const useUserDataStore = create<userDataStoreType>((set) => ({
-    user_data: null,
-    loading_state: false,
+  user_data: null,
+  loading_state: false,
 
-    get_user_data: async () => {
-        try {
-            set({ loading_state: true });
+  get_user_data: async () => {
+    try {
+      set({ loading_state: true });
 
-            const res = await fetch(`${API_URL}/user/profile`, {
-                credentials: 'include',
-            });
+      const res = await fetch(`${API_URL}/user/profile`, {
+        credentials: 'include',
+      });
 
-            if (!res.ok) {
-                throw new Error(`Server responded with status: ${res.status}`);
-            }
+      if (!res.ok) {
+        throw new Error(`Server responded with status: ${res.status}`);
+      }
 
-            const data = await res.json();
-            
-            set({ user_data: data, loading_state: false });
+      const data = await res.json();
 
-            console.log("User data loaded successfully:", data);
+      set({ user_data: data, loading_state: false });
 
-        } catch (error) {
-            console.error("Error fetching user data:", error);
-            set({ user_data: null, loading_state: false });
-        }
+      console.log("User data loaded successfully:", data);
+
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      set({ user_data: null, loading_state: false });
     }
+  }
 }));
 
 export default useUserDataStore;

@@ -3,11 +3,10 @@
 
 .gitpulse-chart-card {
   border: 1px solid t.$stroke-color;
-  background-color: t.$bg-color-shade-300;
-
-  border-radius: 0.75rem;
-  padding: c.$space-3;
-  width: 50%;
+  background-color: t.$bg-color-shade-200;
+  border-radius: c.$radius-3;
+  padding: c.$space-3 ;
+  width: 100%;
   box-sizing: border-box;
 
   .chart-header {
@@ -27,10 +26,27 @@
         font-size: c.$fontsize-3;
         font-family: "font-medium";
       }
+    }
 
-      .chart-description {
-        color: t.$text-color-shade-300;
-        font-size: c.$fontsize-2;
+    .chart-infos {
+      @include c.flex-center;
+      justify-content: flex-start;
+      margin-top: c.$space-1;
+      gap: c.$space-2;
+
+      .chart-data {
+        @include c.flex-center;
+        gap: c.$space-1;
+
+        .data-color {
+          height: 13px;
+          aspect-ratio: 1;
+          border-radius: 4px;
+        }
+
+        .data-value {
+          color: t.$text-color-shade-300;
+        }
       }
     }
 
@@ -42,7 +58,8 @@
         display: flex;
         align-items: center;
         gap: calc(c.$space-1 * 0.3);
-        padding: calc(c.$space-1 * 0.6);
+        padding: c.$space-1;
+        height: c.$height-2;
         border-radius: c.$radius-1;
 
         &.up {
@@ -58,25 +75,23 @@
       }
 
       .chart-select {
-        background-color: t.$bg-color-shade-200;
-        border: 1px solid t.$stroke-color;
+        background-color: t.$bg-color-shade-300;
         appearance: none;
         @include c.flex-center;
         color: t.$text-color-shade-100;
-        font-size: c.$fontsize-2;
-        padding: 0.8rem 1rem;
+        height: c.$height-2;
+        padding: 0 c.$space-2;
         border-radius: c.$radius-1;
-        outline: none;
         cursor: pointer;
       }
     }
   }
 
   .chart-content {
-    padding-top: 1rem;
     height: 150px;
 
     .chart-wrapper {
+      position: relative;
       width: 100%;
       height: 100%;
     }
@@ -97,30 +112,28 @@
 }
 
 .custom-chart-tooltip {
-  background-color: t.$bg-color-shade-100;
-
   [data-theme="light"] & {
     background-color: t.$bg-color-shade-300;
   }
-  
-  border: 1px solid t.$stroke-color;
-  border-radius: 0.5rem;
-  padding: 0.6rem 0.75rem;
-  backdrop-filter: blur(6px);
+
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 
   .tooltip-section {
+    background-color: t.$bg-color-shade-100;
+    border: 1px solid t.$stroke-color;
+    padding: 0.6rem 0.75rem;
     @include c.flex-center;
+    justify-content: flex-start;
+    border-radius: c.$radius-1;
     gap: calc(c.$space-1 * 0.6);
 
     .color {
-      height: 10px;
-      aspect-ratio: 1 / 2;
-      display: inline-block;
+      height: 15px;
+      aspect-ratio: 1 / 2.5;
+      margin-right: calc(c.$space-1 * 0.4);
       border-radius: 2px;
-      margin-right: calc(c.$space-1 * 0.6);
     }
 
     span {

@@ -1,0 +1,79 @@
+@use "../../src/Style/config" as c;
+@use "../../src/Style/theme" as t;
+
+.KPI-container {
+  padding: c.$space-2 c.$space-3;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: c.$space-1;
+  background-color: t.$bg-color-shade-200;
+  border: 1px solid t.$stroke-color;
+  border-radius: c.$radius-2;
+
+  .title-container {
+    font-family: "secondary-font";
+    color: t.$text-color-shade-300;
+    font-size: calc(c.$fontsize-2 * 0.8);
+  }
+
+  .data-container {
+    font-size: c.$fontsize-3;
+    color: t.$text-color-shade-100;
+    font-family: "font-bold";
+    min-height: 1.3em;
+    display: flex;
+    align-items: center;
+
+    svg{
+        width: 30px;
+        margin-right: c.$space-1;
+    }
+
+    .data-content {
+      @include c.flex-center;
+      justify-content: space-between;
+      width: 100%;
+
+      .data-value {
+        font-size: c.$fontsize-3;
+        color: t.$text-color-shade-100;
+        font-family: "font-bold";
+      }
+
+      .performance-delta-pourcent {
+        font-size: c.$fontsize-2;
+        font-family: "secondary-font";
+        color: #ff4343;
+        background-color: #ff434320;
+        padding: calc(c.$space-1 * 0.5);
+        border-radius: c.$radius-1;
+        border: 1px solid #ff434330;
+      }
+    }
+  }
+
+  &.loading {
+    .data-container {
+      width: 100%;
+      border-radius: c.$radius-1;
+      background: linear-gradient(
+        90deg,
+        t.$bg-color-shade-300 25%,
+        #333 50%,
+        t.$bg-color-shade-300 75%
+      );
+      background-size: 200% 100%;
+      animation: skeleton-pulse 1.5s infinite linear;
+    }
+  }
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

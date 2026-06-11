@@ -1,6 +1,7 @@
 import "./LoginPage.scss"
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import c from "../../src/Style/_config.module.scss"
+import { useEffect, useState } from "react"
+import { useSearchParams } from "react-router-dom"
 import GitPulseIcon from "../../Components/GitPulseIcon/GitPulseIcon"
 
 export default function LoginPage() {
@@ -28,17 +29,22 @@ export default function LoginPage() {
             <div className="login-content">
                 <div className="upper-content">
                     <div className="logo-container">
-                        <GitPulseIcon fill={"#fff"} width={80} />
+                        <GitPulseIcon fill={c.textColorShade100} width={80} />
                         <span className="logo-text">GitPulse</span>
                     </div>
                     <span className="description">
                         Analyze your Git contributions, monitor cognitive load, and get instant, AI-powered code reviews in seconds.
                     </span>
                 </div>
-                {errorMessage && errorMessage !== null ? <span className="error-message">{errorMessage}</span> : null}
+                {errorMessage && errorMessage !== null ? <span className="error-message">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="error-icon">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                    </svg>
+                    <span className="error-text">{errorMessage}</span>
+                </span> : null}
                 <button className="github-auth-btn" onClick={() => handleLogin()} >
-                    <GithubSvg fill={"#111"} width={25} />
-                    Connect with Github
+                    <GithubSvg fill={c.bgColorShade100} width={25} />
+                    <span className="btn-text">Sign in with GitHub</span>
                 </button>
                 <footer className="login-footer">
                     <span>Secured via GitHub OAuth 2.0 - Your codebase remains private.</span>

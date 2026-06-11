@@ -1,6 +1,19 @@
+@use "../../src/Style/config" as c;
 @use "../../src/Style/theme" as t;
 
-.dashboard-page{
-    background-color: t.$bg-color-shade-100;
-    min-height: 100vh;
+.dashboard-page {
+  background-color: t.$bg-color-shade-100;
+  min-height: 100vh;
+
+  > .content {
+    display: flex;
+    flex-direction: column;
+    gap: c.$space-1;
+    padding: c.$space-2;
+
+    .KPIs-wrapper {
+      display: flex;
+      gap: c.$space-1;
+    }
+  }
 }
