@@ -25,9 +25,9 @@
     display: flex;
     align-items: center;
 
-    svg{
-        width: 30px;
-        margin-right: c.$space-1;
+    > svg {
+      width: 30px;
+      margin-right: c.$space-1;
     }
 
     .data-content {
@@ -42,6 +42,8 @@
       }
 
       .performance-delta-pourcent {
+        @include c.flex-center;
+        gap: calc(c.$space-1 * 0.5);
         font-size: c.$fontsize-2;
         font-family: "secondary-font";
         color: #ff4343;

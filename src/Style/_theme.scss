@@ -20,6 +20,7 @@
   --bg-300: #1f1f1f;
 
   --stroke-color: #222;
+  --stroke-color-200: #333;
 }
 
 
@@ -32,3 +33,4 @@ $bg-color-shade-200: var(--bg-200);
 $bg-color-shade-300: var(--bg-300);
 
 $stroke-color: var(--stroke-color);
+$stroke-color-200: var(--stroke-color-200);

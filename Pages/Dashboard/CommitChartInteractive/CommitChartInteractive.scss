@@ -5,7 +5,7 @@
   border: 1px solid t.$stroke-color;
   background-color: t.$bg-color-shade-200;
   border-radius: c.$radius-3;
-  padding: c.$space-3 ;
+  padding: c.$space-3;
   width: 100%;
   box-sizing: border-box;
 
@@ -58,15 +58,21 @@
         display: flex;
         align-items: center;
         gap: calc(c.$space-1 * 0.3);
-        padding: c.$space-1;
-        height: c.$height-2;
         border-radius: c.$radius-1;
 
         &.up {
           color: #4dff4d;
         }
         &.down {
+          @include c.flex-center;
+          gap: calc(c.$space-1 * 0.5);
+          font-size: c.$fontsize-2;
+          font-family: "secondary-font";
           color: #ff4343;
+          background-color: #ff434320;
+          padding: calc(c.$space-1 * 0.5);
+          border-radius: c.$radius-1;
+          border: 1px solid #ff434330;
         }
 
         span {
@@ -112,26 +118,28 @@
 }
 
 .custom-chart-tooltip {
-  [data-theme="light"] & {
-    background-color: t.$bg-color-shade-300;
-  }
-
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 
   .tooltip-section {
-    background-color: t.$bg-color-shade-100;
+    background-color: #00000080;
+
+    [data-theme="light"] & {
+      background-color: #0000000c;
+    }
+
+    backdrop-filter: blur(10px);
     border: 1px solid t.$stroke-color;
-    padding: 0.6rem 0.75rem;
+    padding: 0.8rem 0.75rem;
     @include c.flex-center;
     justify-content: flex-start;
     border-radius: c.$radius-1;
     gap: calc(c.$space-1 * 0.6);
 
     .color {
-      height: 15px;
-      aspect-ratio: 1 / 2.5;
+      height: 20px;
+      aspect-ratio: 1 / 4;
       margin-right: calc(c.$space-1 * 0.4);
       border-radius: 2px;
     }

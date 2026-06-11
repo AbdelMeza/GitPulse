@@ -3,7 +3,7 @@ import * as React from "react"
 import "./CommitChartInteractive.scss"
 import c from "../../../src/Style/_config.module.scss"
 import chart from "./CommitChart.module.scss"
-import { ArrowDown, ArrowUp } from "lucide-react"
+import { TrendingDown, TrendingUp } from "lucide-react"
 import { Area, AreaChart, CartesianGrid, XAxis, ResponsiveContainer, Tooltip } from "recharts"
 
 interface ComparisonData {
@@ -41,7 +41,6 @@ function CustomTooltip({ active, payload }: any) {
 export function CommitChartInteractive({ data = [], performanceDelta = 0 }: CommitChartInteractiveProps) {
   const [timeRange, setTimeRange] = React.useState("30d")
   const [isMounted, setIsMounted] = React.useState(false)
-  console.log(data)
 
   React.useEffect(() => {
     const timer = setTimeout(() => setIsMounted(true), 50)
@@ -69,17 +68,17 @@ export function CommitChartInteractive({ data = [], performanceDelta = 0 }: Comm
           <div className="chart-infos">
             <div className="chart-data">
               <span className="data-color" style={{ backgroundColor: chart.currentDataColor }}></span>
-              <span className="data-value">This month</span>
+              <span className="data-value">Current period</span>
             </div>
             <div className="chart-data">
               <span className="data-color" style={{ backgroundColor: chart.lastDataColor }}></span>
-              <span className="data-value">Last month</span>
+              <span className="data-value">Last period</span>
             </div>
           </div>
         </div>
         <div className="header-actions">
           <div className={`performance-badge ${isUp ? 'up' : 'down'}`}>
-            {isUp ? <ArrowUp size={14} /> : <ArrowDown size={14} />}
+            {isUp ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
             <span>{isUp ? `+${performanceDelta}` : performanceDelta}%</span>
           </div>
           <select value={timeRange} onChange={(e) => setTimeRange(e.target.value)} className="chart-select">

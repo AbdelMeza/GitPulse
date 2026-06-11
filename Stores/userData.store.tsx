@@ -36,12 +36,13 @@ export interface GitHubUser {
     forks: number;
     updated_at: string;
   }[];
-  recent_activity: {
+  recent_activities: {
     id: string;
     type: string;
     repo: string;
-    created_at: string;
-    commits_count: number;
+    title: string;
+    date: string;
+    url: string;
   }[];
 }
 
