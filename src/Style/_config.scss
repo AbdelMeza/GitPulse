@@ -29,12 +29,12 @@ $fontsize-3: 1.8rem;
 @mixin skeleton-loading {
   background: linear-gradient(
     90deg,
-    t.$bg-color-shade-300 25%,
-    #333 50%,
-    t.$bg-color-shade-300 75%
+    t.$loading-color-100 25%,
+    t.$loading-color-200 50%,
+    t.$loading-color-100 75%,
   );
   background-size: 200% 100%;
-  animation: skeleton-pulse 1.5s infinite linear;
+  animation: skeleton-pulse 2s infinite linear;
 }
 
 @keyframes skeleton-pulse {

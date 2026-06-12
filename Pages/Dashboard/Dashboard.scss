@@ -2,123 +2,27 @@
 @use "../../src/Style/theme" as t;
 
 .dashboard-page {
-  background-color: t.$bg-color-shade-100;
+  display: flex;
+  background-color: t.$bg-color-shade-200;
   min-height: 100vh;
+
+  .empty-data {
+    @include c.flex-center;
+    height: 100%;
+    min-height: 150px;
+
+    .text {
+      font-family: "secondary-font";
+      color: t.$text-color-shade-300;
+      font-size: calc(c.$fontsize-2 * 0.8);
+    }
+  }
 
   > .content {
     display: flex;
     flex-direction: column;
-    gap: c.$space-1;
+    width: 100%;
     padding: c.$space-2;
-
-    .KPIs-wrapper {
-      display: flex;
-      gap: c.$space-1;
-    }
-
-    .activities-container {
-      background-color: t.$bg-color-shade-200;
-      width: 100%;
-      border: 1px solid t.$stroke-color;
-      padding: c.$space-3;
-      border-radius: c.$radius-3;
-
-      .header {
-        margin-bottom: c.$space-2;
-        .header-text {
-          color: t.$text-color-shade-100;
-          font-size: c.$fontsize-3;
-          font-family: "font-medium";
-        }
-      }
-
-      .activities-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: c.$space-2;
-        max-height: 400px;
-        overflow-y: scroll;
-
-        .loading-item {
-          width: 100%;
-          min-height: 150px;
-          border-radius: c.$radius-2;
-          @include c.skeleton-loading;
-        }
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
-
-        .activity-item {
-          display: flex;
-          flex-direction: column;
-          gap: c.$space-1;
-          background-color: t.$bg-color-shade-300;
-          padding: c.$space-2;
-          border-radius: c.$radius-2;
-          border: 1px solid t.$stroke-color;
-
-          [data-theme="dark"] & {
-            border-color: t.$stroke-color-200;
-          }
-
-          .meta-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .repo-info {
-              display: flex;
-              align-items: center;
-              gap: calc(c.$space-1 * 0.5);
-              color: t.$text-color-shade-200;
-
-              svg {
-                opacity: 0.8;
-              }
-
-              .repo {
-                font-size: calc(c.$fontsize-2 * 0.85);
-                font-family: "secondary-font";
-              }
-            }
-
-            .date {
-              font-size: calc(c.$fontsize-2 * 0.8);
-              color: t.$text-color-shade-300;
-              font-family: "secondary-font";
-            }
-          }
-
-          .main-content {
-            margin-top: calc(c.$space-1 * 0.5);
-
-            .activity-title {
-              color: t.$text-color-shade-100;
-              font-size: c.$fontsize-2;
-              font-family: "font-medium";
-            }
-          }
-
-          .footer-content {
-            margin-top: calc(c.$space-1 * 0.5);
-
-            .activity-type.badge {
-              display: inline-flex;
-              align-items: center;
-              height: c.$height-1;
-              padding: 0 c.$space-1;
-              border-radius: c.$radius-1;
-              font-size: calc(c.$fontsize-2 * 0.8);
-              font-family: "font-medium";
-
-              background-color: t.$bg-color-shade-200;
-              color: t.$text-color-shade-200;
-            }
-          }
-        }
-      }
-    }
+    padding-left: calc(clamp(200px, 20vw, 20vw) + c.$space-2);
   }
 }

@@ -1,11 +1,11 @@
 import { useRef } from "react"
 import * as React from "react"
 import "./CommitChartInteractive.scss"
-import c from "../../../src/Style/_config.module.scss"
 import chart from "./CommitChart.module.scss"
+import c from "../../src/Style/_config.module.scss"
 import { TrendingDown, TrendingUp } from "lucide-react"
+import useUserDataStore from "../../Stores/userData.store"
 import { Area, AreaChart, CartesianGrid, XAxis, ResponsiveContainer, Tooltip } from "recharts"
-import useUserDataStore from "../../../Stores/userData.store"
 
 interface ComparisonData {
   dayIndex: number;
@@ -77,8 +77,8 @@ export function CommitChartInteractive({ data = [], performanceDelta, loadingSta
         <div className="chart-wrapper">
           {loadingState ? <LoadingChart /> :
             isMounted && filteredData.length > 0 ? <CommitsChart filteredData={filteredData} /> :
-              <div className="chart-loading-placeholder">
-                {isMounted ? "No commit data available" : "Loading metrics..."}
+              <div className="empty-data">
+                <span className="text">No data available</span>
               </div>
           }
         </div>

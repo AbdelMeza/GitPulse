@@ -1,0 +1,74 @@
+@use "../../src/Style/config" as c;
+@use "../../src/Style/theme" as t;
+
+.sidebar-container {
+  width: 20vw;
+  min-width: 200px;
+  position: fixed;
+  background-color: t.$bg-color-shade-100;
+  border: 1px solid t.$stroke-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: c.$space-2;
+
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: calc(c.$space-1 * 0.8);
+    margin-bottom: c.$space-3;
+
+    .logo-text {
+      font-size: c.$fontsize-2;
+      font-family: "font-bold";
+      color: t.$text-color-shade-100;
+    }
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: calc(c.$space-1 * 0.3);
+
+    a {
+      @include c.flex-center;
+      justify-content: flex-start;
+      padding: c.$space-2;
+      border-radius: c.$radius-1;
+      color: t.$text-color-shade-200;
+
+      &.active {
+        color: t.$text-color-shade-100;
+        background-color: t.$bg-color-shade-200;
+      }
+
+      &:hover {
+        background-color: t.$bg-color-shade-200;
+      }
+    }
+  }
+
+  .profile{
+    display: flex;
+    align-items: center;
+    gap: calc(c.$space-1 * 0.5);
+
+    .profile-icon-container{
+        width: 35px;
+        height: 35px;
+        border: 1px solid t.$stroke-color;
+        border-radius: 50%;
+
+        .profile-icon{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .profile-username{
+        color: t.$text-color-shade-200;
+    }
+  }
+}
