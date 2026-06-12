@@ -49,26 +49,39 @@
     }
   }
 
-  .profile{
+  .profile {
     display: flex;
     align-items: center;
     gap: calc(c.$space-1 * 0.5);
 
-    .profile-icon-container{
-        width: 35px;
-        height: 35px;
-        border: 1px solid t.$stroke-color;
-        border-radius: 50%;
+    .profile-icon-container {
+      @include c.flex-center;
+      width: 35px;
+      height: 35px;
+      border: 1px solid t.$stroke-color;
+      border-radius: 50%;
+      overflow: hidden;
 
-        .profile-icon{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+      &.loading {
+        @include c.skeleton-loading;
+      }
+
+      .profile-icon {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
 
-    .profile-username{
-        color: t.$text-color-shade-200;
+    .profile-username {
+      color: t.$text-color-shade-200;
+
+      &.loading {
+        @include c.skeleton-loading;
+        min-height: 25px;
+        width: 110px;
+        border-radius: c.$radius-1;
+      }
     }
   }
 }

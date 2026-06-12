@@ -15,6 +15,7 @@ const menuItems = [
 export function Sidebar() {
     const location = useLocation()
     const user = useUserDataStore((state) => state.user_data)
+    const loading = useUserDataStore((state) => state.loading_state)
 
     return (
         <aside className="sidebar-container">
@@ -41,10 +42,10 @@ export function Sidebar() {
             </div>
 
             <div className="lower-content profile">
-                <div className="profile-icon-container">
+                <div className={`profile-icon-container ${loading ? "loading" : ""}`}>
                     <img width={25} src={user?.identity.avatar} alt="" className="profile-icon" />
                 </div>
-                <span className="profile-username">{user?.identity.username}</span>
+                <span className={`profile-username ${loading ? "loading" : ""}`}>{user?.identity.username}</span>
             </div>
         </aside>
     )
