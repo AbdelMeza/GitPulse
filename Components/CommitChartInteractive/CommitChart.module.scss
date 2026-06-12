@@ -5,10 +5,10 @@
 }
 
 [data-theme="dark"]{
-    --last-data-color: #c2c2c2;
+    --last-data-color: #b8998b;
 }
 
 :export {
-  currentDataColor: #19ff5a;
+  currentDataColor: #ff6219;
   lastDataColor: var(--last-data-color);
 }

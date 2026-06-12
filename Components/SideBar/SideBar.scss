@@ -2,7 +2,7 @@
 @use "../../src/Style/theme" as t;
 
 .sidebar-container {
-  width: 20vw;
+  width: c.$sidebar-width;
   min-width: 200px;
   position: fixed;
   background-color: t.$bg-color-shade-100;
@@ -11,13 +11,13 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  padding: c.$space-2;
 
   .sidebar-logo {
     display: flex;
     align-items: center;
     gap: calc(c.$space-1 * 0.8);
     margin-bottom: c.$space-3;
+    padding: c.$space-2 c.$space-2 0;
 
     .logo-text {
       font-size: c.$fontsize-2;
@@ -30,21 +30,44 @@
     display: flex;
     flex-direction: column;
     gap: calc(c.$space-1 * 0.3);
+    padding: 0 calc(c.$space-2 * 0.5);
 
     a {
       @include c.flex-center;
       justify-content: flex-start;
-      padding: c.$space-2;
+      padding: c.$space-1 c.$space-2;
       border-radius: c.$radius-1;
       color: t.$text-color-shade-200;
+      gap: c.$space-1;
+
+      svg {
+        width: 20px;
+        stroke-width: 1;
+        color: t.$text-color-shade-200;
+      }
+
+      [data-theme="light"] &:hover {
+        background-color: rgba(0, 0, 0, 0.03);
+      }
+
+      [data-theme="dark"] &:hover {
+        background-color: rgba(255, 255, 255, 0.01);
+      }
 
       &.active {
         color: t.$text-color-shade-100;
-        background-color: t.$bg-color-shade-200;
-      }
 
-      &:hover {
-        background-color: t.$bg-color-shade-200;
+        svg {
+          color: t.$text-color-shade-200;
+        }
+
+        [data-theme="light"] & {
+          background-color: #0000000d;
+        }
+
+        [data-theme="dark"] & {
+          background-color: #ffffff09;
+        }
       }
     }
   }
@@ -52,35 +75,44 @@
   .profile {
     display: flex;
     align-items: center;
-    gap: calc(c.$space-1 * 0.5);
+    justify-content: space-between;
+    padding: c.$space-2;
+    user-select: none;
 
-    .profile-icon-container {
-      @include c.flex-center;
-      width: 35px;
-      height: 35px;
-      border: 1px solid t.$stroke-color;
-      border-radius: 50%;
-      overflow: hidden;
+    .content {
+      display: flex;
+      align-items: center;
+      gap: calc(c.$space-1 * 0.5);
 
-      &.loading {
-        @include c.skeleton-loading;
+      .profile-icon-container {
+        @include c.flex-center;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        overflow: hidden;
+
+        &.loading {
+          @include c.skeleton-loading;
+        }
+
+        .profile-icon {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
 
-      .profile-icon {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
+      .profile-username {
+        color: t.$text-color-shade-200;
+        display: flex;
+        align-items: center;
 
-    .profile-username {
-      color: t.$text-color-shade-200;
-
-      &.loading {
-        @include c.skeleton-loading;
-        min-height: 25px;
-        width: 110px;
-        border-radius: c.$radius-1;
+        &.loading {
+          @include c.skeleton-loading;
+          min-height: 25px;
+          width: 110px;
+          border-radius: c.$radius-1;
+        }
       }
     }
   }

@@ -23,6 +23,8 @@
     flex-direction: column;
     width: 100%;
     padding: c.$space-2;
-    padding-left: calc(clamp(200px, 20vw, 20vw) + c.$space-2);
+    padding-left: calc(
+      clamp(200px, c.$sidebar-width, c.$sidebar-width) + c.$space-2
+    );
   }
 }

@@ -23,20 +23,19 @@
     .header {
       position: relative;
       z-index: 2;
+      margin-bottom: c.$space-2;
 
       .header-text {
-          font-size: c.$fontsize-2;
+        font-size: c.$fontsize-2;
         color: t.$text-color-shade-100;
-        font-family: "font-medium";
       }
     }
 
     .activities-wrapper {
       position: relative;
-      padding: c.$space-3 0;
       display: flex;
       flex-direction: column;
-      gap: c.$space-2;
+      gap: c.$space-1;
       max-height: 400px;
       overflow-y: scroll;
 
@@ -59,6 +58,10 @@
         padding: c.$space-2;
         border-radius: c.$radius-2;
         border: 1px solid t.$stroke-color;
+
+        span {
+          font-family: "font-bold";
+        }
 
         [data-theme="dark"] & {
           border-color: t.$stroke-color-200;
@@ -98,7 +101,6 @@
           .activity-title {
             color: t.$text-color-shade-100;
             font-size: c.$fontsize-2;
-            font-family: "font-medium";
           }
         }
 
@@ -112,7 +114,6 @@
             padding: 0 c.$space-1;
             border-radius: c.$radius-1;
             font-size: calc(c.$fontsize-2 * 0.8);
-            font-family: "font-medium";
 
             background-color: #00000016;
             border: 1px solid t.$stroke-color;

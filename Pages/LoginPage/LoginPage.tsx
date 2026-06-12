@@ -1,12 +1,16 @@
 import "./LoginPage.scss"
-import c from "../../src/Style/_config.module.scss"
+import { Contrast } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useSearchParams } from "react-router-dom"
+import c from "../../src/Style/_config.module.scss"
 import GitPulseIcon from "../../Components/GitPulseIcon/GitPulseIcon"
+import useTheme from "../../Stores/useTheme"
 
 export default function LoginPage() {
     const [queryParams, setQueryParams] = useSearchParams()
     const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+    const { switchTheme } = useTheme()
 
     useEffect(() => {
         const errorParam = queryParams.get("auth_error")
@@ -26,6 +30,9 @@ export default function LoginPage() {
 
     return (
         <div className="login-page">
+            <div className="switch-theme-btn" onClick={() => switchTheme()}>
+                <Contrast width={20} strokeWidth={1.5} color={c.textColorShade200} />
+            </div>
             <div className="login-content">
                 <div className="upper-content">
                     <div className="logo-container">

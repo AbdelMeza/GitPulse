@@ -20,6 +20,11 @@ $fontsize-1: 0.6rem;
 $fontsize-2: 0.95rem;
 $fontsize-3: 1.8rem;
 
+$sidebar-width: 18vw;
+
+$transition: 0.15s;
+$transition-ease: cubic-bezier(.48,.91,.62,.37);
+
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -31,7 +36,7 @@ $fontsize-3: 1.8rem;
     90deg,
     t.$loading-color-100 25%,
     t.$loading-color-200 50%,
-    t.$loading-color-100 75%,
+    t.$loading-color-100 75%
   );
   background-size: 200% 100%;
   animation: skeleton-pulse 2s infinite linear;

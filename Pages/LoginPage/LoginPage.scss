@@ -7,6 +7,14 @@
   @include c.flex-center;
 }
 
+.switch-theme-btn{
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: c.$space-3;
+  scale: 1.2;
+}
+
 .login-content {
   background-color: t.$bg-color-shade-200;
   padding: c.$space-1;

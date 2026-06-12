@@ -33,7 +33,6 @@
       .chart-title {
         color: t.$text-color-shade-100;
         font-size: c.$fontsize-2;
-        font-family: "font-medium";
       }
     }
 
@@ -78,11 +77,6 @@
         padding: calc(c.$space-1 * 0.5);
         border: 1px solid transparent;
 
-        &.loading{
-          @include c.skeleton-loading;
-          border-color: transparent !important;
-        }
-
         &.up {
           color: #4dff4d;
           background-color: #4dff4d20;
@@ -91,9 +85,14 @@
         &.down {
           color: #ff4343;
           background-color: #ff434320;
-          border-color:  #ff434330;
+          border-color: #ff434330;
         }
 
+        &.loading {
+          @include c.skeleton-loading;
+          border-color: transparent !important;
+        }
+        
         span {
           font-family: "secondary-font";
         }
@@ -131,7 +130,6 @@
       fill: t.$text-color-shade-300;
       tspan {
         font-size: c.$fontsize-2;
-        font-family: "font-medium";
       }
     }
   }

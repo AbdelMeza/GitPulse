@@ -1,7 +1,7 @@
 [data-theme="light"] {
   --text-100: #111111;
   --text-200: #4b4b4b;
-  --text-300: #8e8e8e;
+  --text-300: #6f6f6f;
 
   --bg-100: #e9e2e0;
   --bg-200: #efeae8;
@@ -9,8 +9,8 @@
 
   --stroke-color: #c9c9c9;
 
-  --loading-color-100: #e3e2e2;
-  --loading-color-200: #d6d6d6;
+  --loading-color-100: rgba(0, 0, 0, 0.08);
+  --loading-color-200: rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="dark"] {
@@ -25,8 +25,8 @@
   --stroke-color: #252525;
   --stroke-color-200: #333;
 
-  --loading-color-100: #181818;
-  --loading-color-200: #222;
+  --loading-color-100: #ffffff05;
+  --loading-color-200: #ffffff0d;
 }
 
 $text-color-shade-100: var(--text-100);

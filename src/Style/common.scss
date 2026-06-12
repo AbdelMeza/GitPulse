@@ -7,11 +7,6 @@
 }
 
 @font-face {
-  font-family: "font-medium";
-  src: url("../../Font/font-medium.otf");
-}
-
-@font-face {
   font-family: "font-bold";
   src: url("../../Font/font-bold.otf");
 }
@@ -39,9 +34,20 @@ body {
   font-size: c.$fontsize-2;
   text-decoration: none;
   color: inherit;
-  transition: background-color 0.2s;
+  transition:
+    background-color c.$transition c.$transition-ease,
+    border-color c.$transition c.$transition-ease,
+    color c.$transition c.$transition-ease,
+    fill c.$transition c.$transition-ease,
+    stroke c.$transition c.$transition-ease;
 }
 
-button{
-    font-family: "font-medium";
+.switch-theme-btn {
+  height: 35px;
+  aspect-ratio: 1;
+  @include c.flex-center;
+  border-radius: c.$radius-1;
+  background-color: t.$bg-color-shade-300;
+  cursor: pointer;
+  user-select: none;
 }
