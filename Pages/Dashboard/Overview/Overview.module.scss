@@ -1,0 +1,23 @@
+[data-theme="light"] {
+  --level-1: #00000010;
+  --level-2: #ecc1b4;
+  --level-3: #ff8a6d;
+  --level-4: #fc552b;
+  --level-5: #9c2c10;
+}
+
+[data-theme="dark"] {
+  --level-1: #ffffff0c;
+  --level-2: #592218;
+  --level-3: #a33822;
+  --level-4: #fc552b;
+  --level-5: #ff8a6d;
+}
+
+:export {
+  contributionLvl1: var(--level-1);
+  contributionLvl2: var(--level-2);
+  contributionLvl3: var(--level-3);
+  contributionLvl4: var(--level-4);
+  contributionLvl5: var(--level-5);
+}

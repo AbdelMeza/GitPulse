@@ -2,6 +2,11 @@
 @use "./theme" as t;
 
 @font-face {
+  font-family: "font-light";
+  src: url("../../Font/font-light.otf");
+}
+
+@font-face {
   font-family: "font-regular";
   src: url("../../Font/font-regular.otf");
 }

@@ -11,6 +11,30 @@
     gap: c.$space-1;
   }
 
+  .contributions-grid {
+    width: 100%;
+    background-color: t.$bg-color-shade-300;
+    padding: c.$space-3;
+    border-radius: c.$radius-3;
+    border: 1px solid t.$stroke-color;
+    @include c.flex-center;
+
+    .loading-calendar {
+      min-height: 150px;
+      width: 100%;
+      border-radius: c.$radius-2;
+      @include c.skeleton-loading;
+    }
+
+    text {
+      color: t.$text-color-shade-100;
+    }
+
+    g rect {
+      stroke: transparent !important;
+    }
+  }
+
   .activities-container {
     position: relative;
     background-color: t.$bg-color-shade-300;
@@ -101,6 +125,7 @@
           .activity-title {
             color: t.$text-color-shade-100;
             font-size: c.$fontsize-2;
+            font-family: "font-light";
           }
         }
 
@@ -121,6 +146,31 @@
           }
         }
       }
+    }
+  }
+}
+
+.react-activity-calendar__tooltip {
+  background-color: #00000080;
+  [data-theme="light"] &{
+    background-color: #ffffff58;
+  }
+  backdrop-filter: blur(5px);
+  border: 1px solid t.$stroke-color;
+  padding: calc(c.$space-1 * 0.8) c.$space-1;
+  border-radius: c.$radius-1;
+  color: t.$text-color-shade-100;
+  font-family: "font-light";
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: c.$space-1;
+    .color {
+      display: inline-block;
+      height: 15px;
+      aspect-ratio: 1 / 3;
+      border-radius: 4px;
     }
   }
 }

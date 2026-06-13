@@ -1,13 +1,31 @@
 import "./Overview.scss"
 import { Flame } from "lucide-react"
+import g from "./Overview.module.scss"
 import KPI from "../../../Components/KPI/KPI"
 import c from "../../../src/Style/_config.module.scss"
+import { GitHubCalendar } from "react-github-calendar"
 import useUserDataStore from "../../../Stores/userData.store"
 import { CommitChartInteractive } from "../../../Components/CommitChartInteractive/CommitChartInteractive"
 
 export default function Overview() {
     const { user_data, loading_state } = useUserDataStore()
     const activity = user_data?.recent_activities
+    const githubCalenderData = {
+        username: user_data?.identity?.username || "",
+        year: new Date().getFullYear(),
+        showColorLegend: false,
+        showTotalCount: false,
+        showWeekdayLabels: true,
+        theme: {
+            dark: [
+                g.contributionLvl1,
+                g.contributionLvl2,
+                g.contributionLvl3,
+                g.contributionLvl4,
+                g.contributionLvl5,
+            ],
+        },
+    }
 
     return <div className="overview-page">
         <div className="KPIs-wrapper">
@@ -21,8 +39,37 @@ export default function Overview() {
                 </>
             } loadingState={loading_state} />
         </div>
+        <div className="contributions-grid">
+            {loading_state ?
+                <div className="loading-calendar"></div> :
+                <GitHubCalendar
+                    username={githubCalenderData.username}
+                    year={githubCalenderData.year}
+                    theme={githubCalenderData.theme}
+                    showColorLegend={githubCalenderData.showColorLegend}
+                    showTotalCount={githubCalenderData.showTotalCount}
+                    showWeekdayLabels={githubCalenderData.showWeekdayLabels}
+                    blockSize={13}
+                    tooltips={{
+                        activity: {
+                            text: activity => <>
+                                <span>
+                                    <span className="color" style={{ backgroundColor: githubCalenderData.theme.dark[activity.level] }}></span>
+                                    {activity.count} contributions on {activity.date}
+                                </span>
+                            </>,
+                            placement: 'right',
+                            offset: 6,
+                            transitionStyles: {
+                                duration: 100,
+                            },
+                        },
+                    }}
+                />
+            }
+        </div>
         <div className="performance-chart">
-            <CommitChartInteractive data={(user_data as any)?.commit_comparison_data} performanceDelta={(user_data as any)?.stats.performance_delta_percent} loadingState={loading_state} />
+            <CommitChartInteractive data={(user_data as any)?.contribution_comparison_data} performanceDelta={(user_data as any)?.stats.performance_delta_percent} loadingState={loading_state} />
         </div>
         <div className="activities-container">
             <div className="header">
