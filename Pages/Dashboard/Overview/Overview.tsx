@@ -40,33 +40,38 @@ export default function Overview() {
             } loadingState={loading_state} />
         </div>
         <div className="contributions-grid">
-            {loading_state ?
-                <div className="loading-calendar"></div> :
-                <GitHubCalendar
-                    username={githubCalenderData.username}
-                    year={githubCalenderData.year}
-                    theme={githubCalenderData.theme}
-                    showColorLegend={githubCalenderData.showColorLegend}
-                    showTotalCount={githubCalenderData.showTotalCount}
-                    showWeekdayLabels={githubCalenderData.showWeekdayLabels}
-                    blockSize={13}
-                    tooltips={{
-                        activity: {
-                            text: activity => <>
-                                <span>
-                                    <span className="color" style={{ backgroundColor: githubCalenderData.theme.dark[activity.level] }}></span>
-                                    {activity.count} contributions on {activity.date}
-                                </span>
-                            </>,
-                            placement: 'right',
-                            offset: 6,
-                            transitionStyles: {
-                                duration: 100,
+            <div className={`grid-container ${loading_state ? "loading" : ""}`}>
+                {user_data?.identity?.username ? (
+                    <GitHubCalendar
+                        loading={loading_state}
+                        username={githubCalenderData.username}
+                        year={githubCalenderData.year}
+                        theme={githubCalenderData.theme}
+                        showColorLegend={githubCalenderData.showColorLegend}
+                        showTotalCount={githubCalenderData.showTotalCount}
+                        showWeekdayLabels={githubCalenderData.showWeekdayLabels}
+                        blockSize={13}
+                        tooltips={{
+                            activity: {
+                                text: activity => <>
+                                    <span>
+                                        <span className="color" style={{ backgroundColor: githubCalenderData.theme.dark[activity.level] }}></span>
+                                        {activity.count} contributions on {activity.date}
+                                    </span>
+                                </>,
+                                placement: 'right',
+                                offset: 6,
+                                transitionStyles: {
+                                    duration: 100,
+                                },
                             },
-                        },
-                    }}
-                />
-            }
+                        }}
+                    />
+                ) : (
+                    <div className="skeleton-calendar"></div>
+                )}
+            </div>
+            <span className={`update-note ${loading_state ? "loading" : ""}`}>{loading_state ? "" : "Update may take a few minutes"}</span>
         </div>
         <div className="performance-chart">
             <CommitChartInteractive data={(user_data as any)?.contribution_comparison_data} performanceDelta={(user_data as any)?.stats.performance_delta_percent} loadingState={loading_state} />

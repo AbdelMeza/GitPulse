@@ -88,7 +88,7 @@
         @include c.flex-center;
         width: 35px;
         height: 35px;
-        border-radius: 50%;
+        border-radius: c.$radius-1;
         overflow: hidden;
 
         &.loading {

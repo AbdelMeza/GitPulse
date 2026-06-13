@@ -12,18 +12,39 @@
   }
 
   .contributions-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
     background-color: t.$bg-color-shade-300;
-    padding: c.$space-3;
+    padding: c.$space-3 c.$space-3 c.$space-2;
     border-radius: c.$radius-3;
     border: 1px solid t.$stroke-color;
     @include c.flex-center;
 
-    .loading-calendar {
-      min-height: 150px;
-      width: 100%;
-      border-radius: c.$radius-2;
-      @include c.skeleton-loading;
+    .grid-container {
+      max-height: max-content;
+
+      &.loading {
+        min-height: 140px;
+        width: 100%;
+        border-radius: c.$radius-2;
+        @include c.skeleton-loading;
+      }
+    }
+
+    .update-note {
+      margin-top: c.$space-2;
+      font-size: calc(c.$fontsize-2 * 0.85);
+      color: t.$text-color-shade-300;
+      font-family: "secondary-font";
+
+      &.loading {
+        min-height: 20px;
+        width: 180px;
+        border-radius: c.$radius-1;
+        @include c.skeleton-loading;
+      }
     }
 
     text {
@@ -152,7 +173,7 @@
 
 .react-activity-calendar__tooltip {
   background-color: #00000080;
-  [data-theme="light"] &{
+  [data-theme="light"] & {
     background-color: #ffffff58;
   }
   backdrop-filter: blur(5px);
@@ -160,12 +181,13 @@
   padding: calc(c.$space-1 * 0.8) c.$space-1;
   border-radius: c.$radius-1;
   color: t.$text-color-shade-100;
-  font-family: "font-light";
 
   span {
     display: flex;
     align-items: center;
     gap: c.$space-1;
+    font-family: "font-light";
+
     .color {
       display: inline-block;
       height: 15px;
