@@ -62,42 +62,6 @@
       @include c.flex-center;
       gap: c.$space-1;
 
-      .performance-badge {
-        display: flex;
-        align-items: center;
-        gap: calc(c.$space-1 * 0.3);
-        border-radius: c.$radius-1;
-        @include c.flex-center;
-        gap: calc(c.$space-1 * 0.5);
-        font-size: c.$fontsize-2;
-        height: c.$height-1;
-        min-width: 60px;
-        font-family: "secondary-font";
-        border-radius: c.$radius-1;
-        padding: calc(c.$space-1 * 0.5);
-        border: 1px solid transparent;
-
-        &.up {
-          color: #4dff4d;
-          background-color: #4dff4d20;
-          border-color: #4dff4d30;
-        }
-        &.down {
-          color: #ff4343;
-          background-color: #ff434320;
-          border-color: #ff434330;
-        }
-
-        &.loading {
-          @include c.skeleton-loading;
-          border-color: transparent !important;
-        }
-        
-        span {
-          font-family: "secondary-font";
-        }
-      }
-
       .chart-select {
         background-color: t.$bg-color-shade-200;
         border: 1px solid t.$stroke-color;

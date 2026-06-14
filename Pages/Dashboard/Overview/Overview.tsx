@@ -6,6 +6,7 @@ import c from "../../../src/Style/_config.module.scss"
 import { GitHubCalendar } from "react-github-calendar"
 import useUserDataStore from "../../../Stores/userData.store"
 import { CommitChartInteractive } from "../../../Components/CommitChartInteractive/CommitChartInteractive"
+import PerformanceDelta from "../../../Components/PerformanceDelta/PerformanceDelta"
 
 export default function Overview() {
     const { user_data, loading_state } = useUserDataStore()
@@ -31,17 +32,22 @@ export default function Overview() {
         <div className="KPIs-wrapper">
             <KPI title={"Total public repos"} data={user_data?.stats?.public_repos_count} loadingState={loading_state} />
             <KPI title={"Total contributions"} data={user_data?.stats?.total_lifetime_contributions} loadingState={loading_state} />
-            <KPI title={"Monthly contributions"} data={[user_data?.stats?.current_month_contributions, user_data?.stats?.performance_delta_percent]} loadingState={loading_state} />
+            <KPI title={"Monthly contributions"} data={
+                <>
+                    {user_data?.stats.current_month_contributions}
+                    <PerformanceDelta loadingState={loading_state} />
+                </>
+            } loadingState={loading_state} />
             <KPI title={"Longest streak"} data={
                 <>
-                    <Flame strokeWidth={1.5} color={c.textColorShade200} />
                     {user_data?.stats?.longest_streak}
+                    <Flame strokeWidth={1.5} color={c.textColorShade200} />
                 </>
             } loadingState={loading_state} />
         </div>
         <div className="contributions-grid">
             <div className={`grid-container ${loading_state ? "loading" : ""}`}>
-                {user_data?.identity?.username ? (
+                {!loading_state && user_data?.identity?.username ? (
                     <GitHubCalendar
                         loading={loading_state}
                         username={githubCalenderData.username}
@@ -68,7 +74,10 @@ export default function Overview() {
                         }}
                     />
                 ) : (
-                    <div className="skeleton-calendar"></div>
+                    loading_state ? "" :
+                        <div className="empty-data">
+                            <span className="text">No data available</span>
+                        </div>
                 )}
             </div>
             <span className={`update-note ${loading_state ? "loading" : ""}`}>{loading_state ? "" : "Update may take a few minutes"}</span>

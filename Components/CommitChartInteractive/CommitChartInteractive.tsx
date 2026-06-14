@@ -1,8 +1,8 @@
 import "./CommitChartInteractive.scss"
 import chart from "./CommitChart.module.scss"
-import { TrendingDown, TrendingUp } from "lucide-react"
 import { useState, useEffect, useMemo } from "react"
 import { Area, AreaChart, XAxis, ResponsiveContainer, Tooltip } from "recharts"
+import PerformanceDelta from "../../Components/PerformanceDelta/PerformanceDelta"
 
 interface ComparisonData {
   dayIndex: number;
@@ -77,8 +77,7 @@ export function CommitChartInteractive({ data = [], performanceDelta, loadingSta
   )
 }
 
-function ChartHeader({ performanceDelta, timeRange, setTimeRange, loadingState }: any) {
-  const isUp = (performanceDelta ?? 0) >= 0
+function ChartHeader({ timeRange, setTimeRange, loadingState }: any) {
   return (
     <div className="chart-header">
       <div className="header-info">
@@ -89,14 +88,7 @@ function ChartHeader({ performanceDelta, timeRange, setTimeRange, loadingState }
         </div>
       </div>
       <div className="header-actions">
-        <div className={`performance-badge ${loadingState ? "loading" : ""} ${loadingState ? '' : (isUp ? 'up' : 'down')}`}>
-          {loadingState ? "" : (
-            <>
-              {isUp ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
-              <span>{isUp ? `+${performanceDelta}` : performanceDelta}%</span>
-            </>
-          )}
-        </div>
+        <PerformanceDelta loadingState={loadingState} />
         <select value={timeRange} onChange={(e) => setTimeRange(e.target.value)} className="chart-select">
           <option value="30d">Month</option>
           <option value="7d">Week</option>
