@@ -20,7 +20,7 @@ export default function logoutConfirmation() {
     return <div className={`logout-confirmation ${status ? "open" : ""}`}>
         <div className="content">
             <div className="upper-content">
-                <span className="logout-title">Confirm lgout</span>
+                <span className="logout-title">Confirm logout</span>
                 <span className="confirmation-text">Are you sure you want to log out of GitPulse?</span>
             </div>
             <div className="lower-content">

@@ -55,12 +55,23 @@ export async function get_user_data(req: Request, res: Response): Promise<Respon
         .slice(0, 5)
         .map(async (e: any) => {
           let title = e.type
+          let url = `https://github.com/${e.repo.name}`
           if (e.type === "PushEvent") {
             const sha = e.payload.commits?.[e.payload.commits.length - 1]?.sha || e.payload.head
             const commitRes = await fetch(`https://api.github.com/repos/${e.repo.name}/commits/${sha}`, { headers })
-            if (commitRes.ok) title = (await commitRes.json()).commit.message.split("\n")[0]
+            if (commitRes.ok) {
+                const commitData = await commitRes.json()
+                title = commitData.commit.message.split("\n")[0]
+                url = commitData.html_url
+            }
+          } else if (e.type === "PullRequestEvent") {
+            title = e.payload.pull_request.title
+            url = e.payload.pull_request.html_url
+          } else if (e.type === "IssueCommentEvent") {
+            title = `Comment on issue #${e.payload.issue.number}`
+            url = e.payload.comment.html_url
           }
-          return { type: e.type, repo: e.repo.name, title, date: e.created_at, url: `https://github.com/${e.repo.name}` }
+          return { type: e.type, repo: e.repo.name, title, date: e.created_at, url }
         })
     )
 

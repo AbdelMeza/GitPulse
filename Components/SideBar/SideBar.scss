@@ -83,6 +83,10 @@
       display: flex;
       align-items: center;
       gap: calc(c.$space-1 * 0.5);
+      
+      &:nth-child(1){
+        flex: 1;
+      }
 
       .profile-icon-container {
         @include c.flex-center;
@@ -103,6 +107,7 @@
       }
 
       .profile-username {
+        flex: 1;
         color: t.$text-color-shade-200;
         display: flex;
         align-items: center;
@@ -110,7 +115,7 @@
         &.loading {
           @include c.skeleton-loading;
           min-height: 25px;
-          width: 110px;
+          flex: 0.8;
           border-radius: c.$radius-1;
         }
       }

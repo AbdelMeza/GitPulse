@@ -17,7 +17,14 @@
     color: #4dff4d;
     background-color: #4dff4d20;
     border-color: #4dff4d30;
+
+    [data-theme="light"] & {
+      color: #29d529;
+      background-color: #4dff4d3d;
+      border-color: #29d52930;
+    }
   }
+
   &.down {
     padding: calc(c.$space-1 * 0.5);
     color: #ff4343;
