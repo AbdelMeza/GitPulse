@@ -8,12 +8,13 @@ export function github_auth(req: Request, res: Response): void {
     redirect_uri: process.env.GITHUB_CALLBACK_URL as string,
     scope: "read:user repo",
     allow_signup: "true",
+    prompt: "select_account",
   });
 
   res.redirect(`${githubAuthUrl}?${params.toString()}`);
 }
 
-export async function github_callback (req: Request, res: Response) {
+export async function github_callback(req: Request, res: Response) {
   const { code, error, error_description } = req.query;
 
   if (error || !code) {
@@ -43,7 +44,9 @@ export async function github_callback (req: Request, res: Response) {
     const accessToken = data.access_token;
 
     if (!accessToken) {
-      return res.redirect(`${process.env.FRONTEND_URL}/login?auth_error=token_failed`,);
+      return res.redirect(
+        `${process.env.FRONTEND_URL}/login?auth_error=token_failed`,
+      );
     }
 
     res.cookie("github_token", accessToken, {
@@ -56,6 +59,19 @@ export async function github_callback (req: Request, res: Response) {
     return res.redirect(`${process.env.FRONTEND_URL}/dashboard`);
   } catch (err) {
     console.error("Erreur technique lors de l'échange de token :", err);
-    return res.redirect(`${process.env.FRONTEND_URL}/login?auth_error=server_error`);
+    return res.redirect(
+      `${process.env.FRONTEND_URL}/login?auth_error=server_error`,
+    );
   }
+}
+
+export async function logout(req: Request, res: Response) {
+  res.clearCookie("github_token", {
+    httpOnly: true,
+    secure: false,
+    sameSite: "lax",
+    path: "/",
+  });
+
+  return res.status(200).json({ message: "Déconnexion réussie" });
 }

@@ -1,0 +1,12 @@
+@use "../../../src/Style/config" as c;
+@use "../../../src/Style/theme" as t;
+
+.logout-btn {
+  height: c.$height-1;
+  aspect-ratio: 1;
+  @include c.flex-center;
+  border-radius: c.$radius-1;
+  background-color: t.$bg-color-shade-300;
+  cursor: pointer;
+  user-select: none;
+}

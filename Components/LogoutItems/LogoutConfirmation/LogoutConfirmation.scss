@@ -1,0 +1,68 @@
+@use "../../../src/Style/config" as c;
+@use "../../../src/Style/theme" as t;
+
+.logout-confirmation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  @include c.flex-center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity c.$transition c.$transition-easing;
+
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: c.$space-3;
+    background-color: t.$bg-color-shade-100;
+    padding: c.$space-2;
+    border-radius: c.$radius-2;
+
+    .upper-content {
+      @include c.flex-center;
+      flex-direction: column;
+      gap: c.$space-1;
+
+      .logout-title {
+        font-size: calc(c.$fontsize-2 * 1.3);
+        color: t.$text-color-shade-100;
+      }
+      .confirmation-text {
+        color: t.$text-color-shade-200;
+        font-family: "font-light";
+      }
+    }
+
+    .lower-content {
+      display: flex;
+      gap: calc(c.$space-1 * 0.3);
+      .btn {
+        flex: 1;
+        height: c.$height-1;
+        border-radius: c.$radius-1;
+        cursor: pointer;
+
+        &.confirm-btn {
+          background-color: #ff373711;
+          color: #ff3737;
+          border: 1px solid #ff373785;
+        }
+        
+        &.cancel-btn{
+            background-color: t.$text-color-shade-100;
+            color: t.$bg-color-shade-300;
+        }
+      }
+    }
+  }
+}

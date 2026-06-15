@@ -81,7 +81,10 @@ function ChartHeader({ timeRange, setTimeRange, loadingState }: any) {
   return (
     <div className="chart-header">
       <div className="header-info">
-        <span className="chart-title">Compare your performance</span>
+        <div className="upper-content">
+          <span className="chart-title">Performance</span>
+          <span className="chart-description">Compare your last month contributions with the current one</span>
+        </div>
         <div className="chart-infos">
           <div className="chart-data"><span className="data-color" style={{ backgroundColor: chart.currentDataColor }}></span><span className="data-value">Current period</span></div>
           <div className="chart-data"><span className="data-color" style={{ backgroundColor: chart.lastDataColor }}></span><span className="data-value">Last period</span></div>

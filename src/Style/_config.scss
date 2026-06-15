@@ -23,7 +23,7 @@ $fontsize-3: 1.8rem;
 $sidebar-width: 18vw;
 
 $transition: 0.15s;
-$transition-ease: cubic-bezier(.48,.91,.62,.37);
+$transition-easing: cubic-bezier(.48,.91,.62,.37);
 
 @mixin flex-center {
   display: flex;

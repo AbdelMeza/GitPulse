@@ -5,6 +5,7 @@ import c from "../../src/Style/_config.module.scss"
 import { Link, useLocation } from "react-router-dom"
 import GitPulseIcon from "../GitPulseIcon/GitPulseIcon"
 import useUserDataStore from "../../Stores/userData.store"
+import LogoutContainer from "../LogoutItems/LogoutBtn/LogoutBtn"
 
 const menuItems = [
     { name: "Dashboard", href: "/dashboard" },
@@ -55,6 +56,7 @@ export function Sidebar() {
                     <div className="switch-theme-btn" onClick={() => switchTheme()}>
                         <Contrast width={20} strokeWidth={1.5} color={c.textColorShade200} />
                     </div>
+                    <LogoutContainer size={18} color={c.textColorShade200}/>
                 </div>
             </div>
         </aside>

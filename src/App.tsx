@@ -1,7 +1,8 @@
 import "./Style/common.scss"
-import { Suspense, lazy, useEffect } from "react"
-import { Route, Routes } from "react-router-dom"
 import useTheme from "../Stores/useTheme"
+import { Route, Routes } from "react-router-dom"
+import { Suspense, lazy, useEffect } from "react"
+import LogoutConfirmation from "../Components/LogoutItems/LogoutConfirmation/LogoutConfirmation"
 
 const LoginPage = lazy(() => import("../Pages/LoginPage/LoginPage"))
 const Dashboard = lazy(() => import("../Pages/Dashboard/Dashboard"))
@@ -20,7 +21,8 @@ function App() {
     }
 
   }, [theme])
-  return (
+  return <>
+    <LogoutConfirmation />
     <Routes>
       <Route path="/login" element={<Suspense fallback={<div>Loading...</div>}><LoginPage /></Suspense>} />
       <Route path="/dashboard" element={<Dashboard />}>
@@ -31,7 +33,7 @@ function App() {
         <Route path="settings" element={""} />
       </Route>
     </Routes>
-  )
+  </>
 }
 
 export default App

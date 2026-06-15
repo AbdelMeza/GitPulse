@@ -87,7 +87,7 @@ export default function Overview() {
         </div>
         <div className="activities-container">
             <div className="header">
-                <span className="header-text">Recent activity</span>
+                <span className="header-text">Recent activities</span>
             </div>
             <div className="activities-wrapper">
                 {loading_state ? [0, 0, 0].map((_, i) => (

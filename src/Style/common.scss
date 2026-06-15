@@ -40,15 +40,15 @@ body {
   text-decoration: none;
   color: inherit;
   transition:
-    background-color c.$transition c.$transition-ease,
-    border-color c.$transition c.$transition-ease,
-    color c.$transition c.$transition-ease,
-    fill c.$transition c.$transition-ease,
-    stroke c.$transition c.$transition-ease;
+    background-color c.$transition c.$transition-easing,
+    border-color c.$transition c.$transition-easing,
+    color c.$transition c.$transition-easing,
+    fill c.$transition c.$transition-easing,
+    stroke c.$transition c.$transition-easing;
 }
 
 .switch-theme-btn {
-  height: 35px;
+  height: c.$height-1;
   aspect-ratio: 1;
   @include c.flex-center;
   border-radius: c.$radius-1;

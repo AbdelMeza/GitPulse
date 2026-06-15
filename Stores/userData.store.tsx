@@ -49,12 +49,16 @@ export interface GitHubUser {
 type userDataStoreType = {
   user_data: GitHubUser | null;
   loading_state: boolean;
+  clearData: () => void
   get_user_data: () => Promise<void>;
 }
+
 
 const useUserDataStore = create<userDataStoreType>((set) => ({
   user_data: null,
   loading_state: false,
+
+  clearData: () => set({ user_data: null }),
 
   get_user_data: async () => {
     try {
