@@ -26,9 +26,9 @@ app.use(cookieParser())
 app.use('/api', githubAuthRouter)
 app.use('/user', githubProfileRoute)
 
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`)
-})
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 const gracefulShutdown = (signal: string) => {
   console.log(`\n${signal} received. Closing server...`)
