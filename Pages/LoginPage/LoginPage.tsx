@@ -7,7 +7,7 @@ import GitPulseIcon from "../../Components/GitPulseIcon/GitPulseIcon"
 import useTheme from "../../Stores/useTheme"
 
 export default function LoginPage() {
-    const [queryParams, setQueryParams] = useSearchParams()
+    const [queryParams, _] = useSearchParams()
     const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
     const { switchTheme } = useTheme()

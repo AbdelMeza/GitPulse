@@ -26,6 +26,7 @@ async function getLifetimeStats(username: string, token: string) {
 
 export async function get_user_data(req: Request, res: Response): Promise<Response | void> {
   const token = req.cookies.github_token
+  console.log(req)
   if (!token) return res.status(401).json({ error: "Unauthorized" })
 
   const headers = { Authorization: `Bearer ${token}`, Accept: "application/json", "User-Agent": "GitPulse-App" }

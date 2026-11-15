@@ -10,7 +10,7 @@ export default function RecentActivities() {
         {loading_state ? [0, 0, 0, 0].map((_, i) => (
             <div className="loading-item" key={i}></div>
         )) : activity && activity.length > 0 ?
-            activity.map((a, i) => (
+            activity.map((a, _) => (
                 <ActivityItem data={a} />
             ))
             : <div className="empty-data">

@@ -1,4 +1,4 @@
-import "./Sidebar.scss"
+import "./SideBar.scss"
 import { Contrast } from "lucide-react"
 import useTheme from "../../Stores/useTheme"
 import c from "../../src/Style/_config.module.scss"

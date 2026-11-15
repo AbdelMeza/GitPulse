@@ -8,7 +8,7 @@ import githubProfileRoute from "./Routes/github.profile.route.ts"
 
 dotenv.config()
 
-const PORT: string | number = process.env.PORT || 5135
+const PORT: string | number = process.env.PORT || 2606
 const app = express()
 const server = http.createServer(app)
 

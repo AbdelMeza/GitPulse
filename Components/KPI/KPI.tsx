@@ -1,6 +1,4 @@
-import PerformanceDelta from "../PerformanceDelta/PerformanceDelta"
 import "./KPI.scss"
-import { TrendingDown, TrendingUp } from "lucide-react"
 
 type KPIdata = {
     title: string

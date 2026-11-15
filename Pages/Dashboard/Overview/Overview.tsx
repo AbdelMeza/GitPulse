@@ -11,7 +11,6 @@ import { CommitChartInteractive } from "../../../Components/CommitChartInteracti
 
 export default function Overview() {
     const { user_data, loading_state } = useUserDataStore()
-    const activity = user_data?.recent_activities
     const githubCalenderData = {
         username: user_data?.identity?.username || "",
         year: new Date().getFullYear(),
@@ -48,38 +47,7 @@ export default function Overview() {
         </div>
         <div className="contributions-grid">
             <div className={`grid-container ${loading_state ? "loading" : ""}`}>
-                {!loading_state && user_data?.identity?.username ? (
-                    <GitHubCalendar
-                        loading={loading_state}
-                        username={githubCalenderData.username}
-                        year={githubCalenderData.year}
-                        theme={githubCalenderData.theme}
-                        showColorLegend={githubCalenderData.showColorLegend}
-                        showTotalCount={githubCalenderData.showTotalCount}
-                        showWeekdayLabels={githubCalenderData.showWeekdayLabels}
-                        blockSize={13}
-                        tooltips={{
-                            activity: {
-                                text: activity => <>
-                                    <span>
-                                        <span className="color" style={{ backgroundColor: githubCalenderData.theme.dark[activity.level] }}></span>
-                                        {activity.count} contributions on {activity.date}
-                                    </span>
-                                </>,
-                                placement: 'right',
-                                offset: 6,
-                                transitionStyles: {
-                                    duration: 100,
-                                },
-                            },
-                        }}
-                    />
-                ) : (
-                    loading_state ? "" :
-                        <div className="empty-data">
-                            <span className="text">No data available</span>
-                        </div>
-                )}
+                <GitHubCalendar {...githubCalenderData} />
             </div>
             <span className={`update-note ${loading_state ? "loading" : ""}`}>{loading_state ? "" : "Update may take a few minutes"}</span>
         </div>
