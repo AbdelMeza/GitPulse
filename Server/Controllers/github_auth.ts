@@ -51,9 +51,10 @@ export async function github_callback(req: Request, res: Response) {
 
     res.cookie("github_token", accessToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: true,
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
+      path: "/",
     });
 
     return res.redirect(`${process.env.FRONTEND_URL}/dashboard`);
@@ -68,8 +69,8 @@ export async function github_callback(req: Request, res: Response) {
 export async function logout(req: Request, res: Response) {
   res.clearCookie("github_token", {
     httpOnly: true,
-    secure: false,
-    sameSite: "lax",
+    secure: true,
+    sameSite: "none",
     path: "/",
   });
 

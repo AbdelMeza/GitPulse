@@ -8,11 +8,12 @@ import githubProfileRoute from "./Routes/github.profile.route.ts"
 
 dotenv.config()
 
-const PORT: string | number = process.env.PORT || 2606
+const PORT = Number(process.env.PORT) || 2606
 const app = express()
 const server = http.createServer(app)
 
 // --- MIDDLEWARES ---
+
 app.use(
   cors({
     origin: `${process.env.FRONTEND_URL}`, 
@@ -22,11 +23,28 @@ app.use(
 app.use(express.json())
 app.use(cookieParser())
 
+// Test route to check if the server is running correctly
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    name: "GitPulse API",
+    status: "running",
+    message: "Welcome to GitPulse API"
+  });
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "healthy"
+  });
+});
+
 //Routes
+
 app.use('/api', githubAuthRouter)
 app.use('/user', githubProfileRoute)
 
-app.listen(PORT, "0.0.0.0", () => {
+server.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
 
