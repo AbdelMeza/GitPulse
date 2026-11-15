@@ -25,7 +25,7 @@ export default function LoginPage() {
     }, [queryParams])
 
     const handleLogin = () => {
-        window.location.href = 'http://localhost:2606/api/auth/github';
+        window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/github`;
     }
 
     return (
